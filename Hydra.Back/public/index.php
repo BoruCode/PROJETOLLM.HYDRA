@@ -24,6 +24,8 @@ require __DIR__ . '/../config/database.php';
 
 use Hydra\Controllers\AuthController;
 use Hydra\Controllers\LojaController;
+use Hydra\Controllers\LoteController;
+use Hydra\Controllers\SincronizacaoController;
 use Hydra\Controllers\UsuarioController;
 use Hydra\Support\Auth;
 use Hydra\Support\Env;
@@ -83,6 +85,10 @@ $routes = [
 
     ['GET', '#^/api/loja$#', fn () => (new LojaController())->show()],
     ['PUT', '#^/api/loja$#', fn () => (new LojaController())->update()],
+
+    ['PUT', '#^/api/sincronizar$#', fn () => (new SincronizacaoController())->sincronizar()],
+    ['GET', '#^/api/lotes$#', fn () => (new LoteController())->index()],
+    ['POST', '#^/api/lotes$#', fn () => (new LoteController())->store()],
 ];
 
 foreach ($routes as [$routeMethod, $pattern, $handler]) {

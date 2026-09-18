@@ -156,6 +156,7 @@
             precoVenda: (fd.get('precoVenda') || '').toString(),
             quantidade: (fd.get('quantidade') || '').toString(),
             estoqueMinimo: (fd.get('estoqueMinimo') || '').toString(),
+            validade: (fd.get('validade') || '').toString(),
             unidade: (fd.get('unidade') || 'un').toString(),
         };
     }
@@ -183,6 +184,7 @@
             price: Number(data.precoVenda),
             quantity: Number(data.quantidade),
             minStock: data.estoqueMinimo ? Number(data.estoqueMinimo) : 0,
+            validade: data.validade || null,
             unit: data.unidade,
             image: imageDataUrl,
             criadoEm: new Date().toISOString(),

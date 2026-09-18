@@ -101,22 +101,14 @@
         showToast('Alterações descartadas');
     });
 
-    /* ================= Sidebar nav (cosmético, demo de página única) ================= */
-    document.querySelectorAll('.hydro-menu a[data-view]').forEach((link) => {
+    /* ================= Sidebar nav ================= */
+    // Só o "Sair" é interceptado; os demais links navegam normalmente.
+    document.querySelectorAll('.hydro-menu a[data-view="sair"]').forEach((link) => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            if (link.dataset.view === 'sair') {
-                window.hydraApi('/auth/logout', { method: 'POST' }).finally(() => {
-                    window.location.href = 'login.html';
-                });
-                return;
-            }
-            document.querySelectorAll('.hydro-menu a').forEach((a) => a.classList.remove('hydro-active'));
-            link.classList.add('hydro-active');
-            closeSidebar();
-            if (link.dataset.view !== 'configuracoes') {
-                showToast('Esta é uma demonstração — apenas as telas de Estoque, Equipe e Configurações estão implementadas');
-            }
+            window.hydraApi('/auth/logout', { method: 'POST' }).finally(() => {
+                window.location.href = 'login.html';
+            });
         });
     });
 

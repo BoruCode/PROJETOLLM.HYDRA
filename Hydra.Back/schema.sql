@@ -105,3 +105,101 @@ CREATE INDEX idx_clientes_email   ON clientes (email);
 --   RN07 - Permissão de venda: 'operador_caixa' ou 'administrador'
 --   RN21 - Confirmação prévia antes de excluir usuário/produto/cliente
 -- ============================================================
+
+
+-- ============================================================
+-- Módulo de Estoque e Vendas (PDV) — base do Agente de IA
+--   produtos                 -> catálogo e quantidade atual
+--   lotes                    -> validade por lote (consultar_validade)
+--   vendas / itens_venda     -> histórico de vendas (consultar_vendas)
+--   movimentacoes_estoque    -> entradas e saídas
+--
+-- codigo_externo guarda o id gerado pelo front (HydroStore, ex.: "p1",
+-- "sale_xxx"), usado por PUT /api/sincronizar para fazer upsert sem
+-- duplicar registros. Quantidades são DECIMAL porque há produtos
+-- vendidos por peso (kg).
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS produtos (
+    id_produto      INT AUTO_INCREMENT PRIMARY KEY,
+    id_loja         INT NOT NULL,
+    codigo_externo  VARCHAR(60)  NOT NULL,
+    nome            VARCHAR(150) NOT NULL,
+    descricao       VARCHAR(255) NULL,
+    sku             VARCHAR(40)  NULL,
+    plu             VARCHAR(20)  NULL,
+    categoria       VARCHAR(60)  NULL,
+    preco_custo     DECIMAL(10,2) NOT NULL DEFAULT 0,
+    preco_venda     DECIMAL(10,2) NOT NULL DEFAULT 0,
+    quantidade      DECIMAL(10,3) NOT NULL DEFAULT 0,
+    estoque_minimo  DECIMAL(10,3) NOT NULL DEFAULT 0,
+    unidade         VARCHAR(10)  NOT NULL DEFAULT 'un',
+    data_criacao    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_loja) REFERENCES lojas(id_loja) ON DELETE CASCADE,
+    UNIQUE KEY uq_produtos_loja_codigo (id_loja, codigo_externo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX idx_produtos_quantidade ON produtos (id_loja, quantidade);
+
+
+CREATE TABLE IF NOT EXISTS lotes (
+    id_lote         INT AUTO_INCREMENT PRIMARY KEY,
+    id_produto      INT NOT NULL,
+    codigo_lote     VARCHAR(40) NULL,
+    validade        DATE NOT NULL,
+    quantidade      DECIMAL(10,3) NOT NULL DEFAULT 0,
+    data_criacao    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX idx_lotes_validade ON lotes (validade);
+
+
+CREATE TABLE IF NOT EXISTS vendas (
+    id_venda        INT AUTO_INCREMENT PRIMARY KEY,
+    id_loja         INT NOT NULL,
+    codigo_externo  VARCHAR(60) NOT NULL,
+    numero_pedido   INT NULL,
+    id_cliente      INT NULL,                     -- RN16: cliente é opcional
+    forma_pagamento VARCHAR(20) NULL,
+    total           DECIMAL(10,2) NOT NULL DEFAULT 0,
+    data_venda      DATETIME NOT NULL,
+
+    FOREIGN KEY (id_loja) REFERENCES lojas(id_loja) ON DELETE CASCADE,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente) ON DELETE SET NULL,
+    UNIQUE KEY uq_vendas_loja_codigo (id_loja, codigo_externo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX idx_vendas_data ON vendas (id_loja, data_venda);
+
+
+CREATE TABLE IF NOT EXISTS itens_venda (
+    id_item         INT AUTO_INCREMENT PRIMARY KEY,
+    id_venda        INT NOT NULL,
+    id_produto      INT NULL,                     -- NULL se o produto foi excluído depois
+    nome_produto    VARCHAR(150) NOT NULL,        -- cópia do nome: preserva o histórico
+    quantidade      DECIMAL(10,3) NOT NULL,
+    preco_unitario  DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (id_venda) REFERENCES vendas(id_venda) ON DELETE CASCADE,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE IF NOT EXISTS movimentacoes_estoque (
+    id_movimentacao INT AUTO_INCREMENT PRIMARY KEY,
+    id_loja         INT NOT NULL,
+    codigo_externo  VARCHAR(60) NOT NULL,
+    id_produto      INT NULL,
+    nome_produto    VARCHAR(150) NOT NULL,
+    tipo            ENUM('entrada', 'saida') NOT NULL,
+    quantidade      DECIMAL(10,3) NOT NULL,
+    origem          VARCHAR(20) NULL,             -- cadastro | estoque | venda
+    data_movimento  DATETIME NOT NULL,
+
+    FOREIGN KEY (id_loja) REFERENCES lojas(id_loja) ON DELETE CASCADE,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE SET NULL,
+    UNIQUE KEY uq_mov_loja_codigo (id_loja, codigo_externo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -4,20 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydra · Dashboard</title>
+    <title>Hydra · Assistente IA</title>
     <link rel="icon" type="image/png" href="../img/logo-hydra.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/controle-estoque.css">
+    <link rel="stylesheet" href="../css/gerenciar-usuarios.css">
     <link rel="stylesheet" href="../css/public-demo.css">
     <link rel="stylesheet" href="../css/font-size.css">
+    <link rel="stylesheet" href="../css/chat.css">
 </head>
 
 <body>
 
-    <!-- Tudo isolado dentro de .hydro-dash para não colidir com o CSS/JS do restante do sistema -->
-    <div class="hydro-dash">
+    <!-- Reaproveita o escopo .hydro-stock (sidebar, topbar, cores) das demais telas -->
+    <div class="hydro-stock">
 
         <button class="hydro-mobile-toggle" id="hydroMobileToggle" aria-label="Abrir menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -28,7 +30,6 @@
 
         <div class="hydro-app">
 
-            <!-- Sidebar -->
             <aside class="hydro-sidebar" id="hydroSidebar">
                 <a class="hydro-brand" href="controle-estoque.html" aria-label="Ir para o início">
                     <img src="../img/logo-hydra.png" alt="Hydra PDV">
@@ -39,16 +40,17 @@
                     <ul>
                         <li><a href="controle-estoque.html" data-view="estoque"><i
                                     class="hydro-ic hydro-ic-inventory"></i><span>Estoque</span></a></li>
-                        <li><a href="caixa.html" data-view="caixa"><i class="hydro-ic hydro-ic-drawer"></i><span>Vendas</span></a>
-                        </li>
-                        <li><a href="#" class="hydro-active" data-view="dashboard"><i
+                        <li><a href="caixa.html" data-view="caixa"><i
+                                    class="hydro-ic hydro-ic-drawer"></i><span>Vendas</span></a></li>
+                        <li><a href="dashboard.html" data-view="dashboard"><i
                                     class="hydro-ic hydro-ic-home"></i><span>Relatório</span></a></li>
-                        <li><a href="chat.html" data-view="assistente"><i class="hydro-ic hydro-ic-home"></i><span>Assistente IA</span></a></li>
+                        <li><a href="chat.html" class="hydro-active" data-view="assistente"><i
+                                    class="hydro-ic hydro-ic-home"></i><span>Assistente IA</span></a></li>
                     </ul>
                 </nav>
 
                 <div class="hydro-menu hydro-menu-admin">
-                    <p class="hydro-menu-label"><span class="hydro-menu-restricted">Admin</span></p>
+                    <p class="hydro-menu-label" id="hydroMenuAdminLabel"><span class="hydro-menu-restricted">Admin</span></p>
                     <ul>
                         <li id="hydroLiEquipe"><a href="gerenciar-usuarios.html"><i
                                     class="hydro-ic hydro-ic-users"></i><span>Equipe</span></a></li>
@@ -66,15 +68,12 @@
                 </div>
             </aside>
 
-            <!-- Main -->
             <main class="hydro-main">
                 <header class="hydro-topbar">
-                    <h1>Dashboard</h1>
+                    <h1>Assistente IA</h1>
                     <div class="hydro-topbar-actions">
-                        <div class="hydro-search">
-                            <i class="hydro-ic hydro-ic-search"></i>
-                            <input type="text" id="hydroSearchInput" placeholder="Buscar">
-                        </div>
+                        <a class="hydro-icon-btn" href="configuracoes-loja.html" aria-label="Configuração Loja"><i
+                                class="hydro-ic hydro-ic-gear"></i></a>
                         <button class="hydro-icon-btn" aria-label="Notificações">
                             <i class="hydro-ic hydro-ic-bell"></i>
                             <span class="hydro-notif-dot"></span>
@@ -86,59 +85,23 @@
                     </div>
                 </header>
 
-                <!-- KPIs -->
-                <section class="hydro-kpi-grid" id="hydroKpiGrid"></section>
+                <section class="hydro-table-card hydro-chat-card">
+                    <div class="hydro-chat-messages" id="chat-mensagens" aria-live="polite"></div>
 
-                <!-- Gráficos -->
-                <section class="hydro-charts-grid">
-                    <div class="hydro-card hydro-chart-card">
-                        <div class="hydro-chart-header">
-                            <h2>Gráfico de entradas x saídas</h2>
-                            <span class="hydro-chart-period">Últimos 30 dias</span>
-                        </div>
-                        <div class="hydro-chart-body" id="hydroFlowChart"></div>
-                        <div class="hydro-chart-legend">
-                            <span class="hydro-legend-item"><i class="hydro-legend-dot hydro-legend-in"></i>Entradas</span>
-                            <span class="hydro-legend-item"><i class="hydro-legend-dot hydro-legend-out"></i>Saídas</span>
-                        </div>
+                    <div class="hydro-chat-suggestions" id="chat-sugestoes">
+                        <button type="button" data-pergunta="Quais são os 5 produtos mais vendidos?">Mais vendidos</button>
+                        <button type="button" data-pergunta="Quais produtos estão com estoque baixo?">Estoque baixo</button>
+                        <button type="button" data-pergunta="Quais produtos vencem nos próximos 7 dias?">Vencendo em 7 dias</button>
+                        <button type="button" data-pergunta="Quais produtos estão parados, sem vendas?">Produtos parados</button>
                     </div>
 
-                    <div class="hydro-card hydro-chart-card">
-                        <div class="hydro-chart-header">
-                            <h2>Top produtos mais movimentados</h2>
-                            <span class="hydro-chart-period">Últimos 30 dias</span>
-                        </div>
-                        <div class="hydro-chart-body" id="hydroTopChart"></div>
-                    </div>
-                </section>
-
-                <!-- Alertas de estoque -->
-                <section class="hydro-card hydro-alerts-card">
-                    <div class="hydro-alerts-header">
-                        <h2>Alertas de estoque</h2>
-                    </div>
-                    <div class="hydro-table-scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Produto</th>
-                                    <th>SKU</th>
-                                    <th>Estoque Atual</th>
-                                    <th>Estoque Mínimo</th>
-                                    <th>Status</th>
-                                    <th class="hydro-col-actions">Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody id="hydroAlertsBody"></tbody>
-                        </table>
-                    </div>
-                    <p class="hydro-alerts-empty" id="hydroAlertsEmpty" hidden>Nenhum alerta no momento — todos os produtos estão com estoque saudável.</p>
+                    <form class="hydro-chat-form" id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Pergunte sobre o estoque..." autocomplete="off" required>
+                        <button type="submit" class="hydro-btn hydro-btn-primary" id="chat-enviar">Enviar</button>
+                    </form>
                 </section>
             </main>
         </div>
-
-        <div class="hydro-toast" id="hydroToast"></div>
-
     </div>
 
     <div class="accessibility-widget">
@@ -146,12 +109,10 @@
         <button id="font-minus" data-font-action="decrease">A−</button>
     </div>
 
-    <script src="../js/hydro-store.js"></script>
     <script src="../js/api.js"></script>
-    <script src="../js/hydro-sync.js"></script>
     <script src="../js/public-demo.js"></script>
     <script src="../js/font-size.js"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/chat.js"></script>
 </body>
 
 </html>

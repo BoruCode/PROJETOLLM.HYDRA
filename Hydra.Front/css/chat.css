@@ -1,0 +1,112 @@
+/* Complementa controle-estoque.css; tudo escopado em .hydro-stock. */
+
+.hydro-stock .hydro-chat-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 860px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hydro-stock .hydro-chat-messages {
+    height: min(56vh, 520px);
+    min-height: 260px;
+    overflow-y: auto;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--bg);
+}
+
+.hydro-stock .hydro-chat-msg {
+    max-width: 78%;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: 14.5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.hydro-stock .hydro-chat-msg-usuario {
+    align-self: flex-end;
+    background: var(--navy-900);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.hydro-stock .hydro-chat-msg-agente {
+    align-self: flex-start;
+    background: var(--card);
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+}
+
+.hydro-stock .hydro-chat-msg-erro {
+    background: var(--red-bg);
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.hydro-stock .hydro-chat-msg-pensando {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.hydro-stock .hydro-chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 22px 0;
+    border-top: 1px solid var(--border);
+}
+
+.hydro-stock .hydro-chat-suggestions button {
+    border: 1px solid var(--border);
+    background: var(--blue-bg);
+    color: var(--navy-900);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background .15s ease;
+}
+
+.hydro-stock .hydro-chat-suggestions button:hover {
+    background: #dfe6fd;
+}
+
+.hydro-stock .hydro-chat-form {
+    display: flex;
+    gap: 10px;
+    padding: 14px 22px 20px;
+}
+
+.hydro-stock .hydro-chat-form input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: var(--ink);
+    background: #fff;
+    outline: none;
+}
+
+.hydro-stock .hydro-chat-form input:focus {
+    border-color: var(--blue);
+}
+
+.hydro-stock .hydro-chat-form button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .hydro-stock .hydro-chat-msg {
+        max-width: 92%;
+    }
+}
