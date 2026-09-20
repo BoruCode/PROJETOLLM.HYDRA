@@ -13,7 +13,7 @@
   +-> [orçamento estourou?] --sim--> PARA: orcamento_passos | orcamento_tokens | orcamento_custo
   |        | não
   |        v
-  |   MODELO  (prompts/sistema_v1.md + schemas das 4 ferramentas)
+  |   MODELO  (prompts/sistema_v2.md + schemas das 4 ferramentas)
   |        |-- texto final ---------------> PARA: resposta_final
   |        |-- erro do provedor ----------> PARA: erro_llm
   |        `-- pede ferramenta(s)
@@ -83,7 +83,7 @@ justificativa de negócio (`docs/case.md`, §2.5) e ainda não foi feita.
 | Confirmação humana antes de toda escrita | `_executar` em `agente.py` | não |
 | Teto de passos, tokens e custo; motivo de parada registrado | `executar` em `agente.py` | não |
 | Erro de ferramenta vira dado com `dica` | `erro()` e `_executar` | não |
-| Não inventar número; contradizer o usuário com o dado; recusar alterar estoque | `prompts/sistema_v1.md` | **sim** (medido pelos casos 02, 03 e 05) |
+| Não inventar número; contradizer o usuário com o dado; recusar alterar estoque | `prompts/sistema_v2.md` | **sim** (medido pelos casos 02, 03 e 05) |
 
 Consequência: mesmo que o modelo tente registrar um alerta indevido, o código barra (caso 04). O que só o prompt garante é
 verificado pela demonstração, não assumido.
@@ -91,15 +91,17 @@ verificado pela demonstração, não assumido.
 ## Prompt: o que cada regra impede
 
 Regra de ouro da disciplina: se apagar uma frase e não souber dizer o que ela impedia, ela não estava fazendo nada.
+A v1 (`sistema_v1.md`, 3 de 5 casos) virou a v2 (5 de 5) mudando as regras 5, 6 e 7; o motivo está no cabeçalho do arquivo.
 
-| Regra em `prompts/sistema_v1.md` | O que impede |
+| Regra em `prompts/sistema_v2.md` | O que impede |
 |---|---|
 | 1. Só nomes e números vindos das ferramentas | número inventado (RN29) |
 | 2. Conferir antes de concordar; o dado vale | concordar com afirmação errada do Administrador (caso 02) |
 | 3. Não alterar estoque, produtos, vendas, clientes, usuários | pedido fora do escopo virar ação (RN28, caso 05) |
 | 4. `registrar_alerta` só se pedido; copiar nome e lote como vieram | alerta por iniciativa própria; lote inventado |
-| 5. `consultar_validade` antes de registrar validade | código de lote adivinhado; janela errada |
-| 6. Erro: corrigir no máximo uma vez; produto inexistente não se troca | laço de tentativas; troca silenciosa de produto (caso 03) |
+| 5. Achar produto (`consultar_estoque`) e lote (`consultar_validade`, `dias=365` se a janela não foi dita) antes de registrar | código de lote adivinhado; pergunta desnecessária de "quantos dias?" (o erro da v1 nos casos 03 e 04) |
+| 6. Erro: corrigir no máximo uma vez; produto inexistente não se troca; recusa por `fora_da_regra` se explica e não se insiste | laço de tentativas; troca silenciosa de produto (caso 03); insistir contra a regra do código (caso 04) |
+| 7. Só perguntar o que nenhuma ferramenta responde | perguntas que o próprio agente resolve consultando |
 | Formato: até 6 linhas, sem tabelas | resposta longa demais para o terminal |
 
 ## Orçamento e terminação

@@ -85,6 +85,23 @@ class TestFerramentas(BaseComBanco):
         self.assertEqual(consultar_vendas(self.ctx, "sideways")["erro"], "argumento_invalido")
         self.assertEqual(consultar_vendas(self.ctx, "desc", 5, 9999)["erro"], "argumento_invalido")
 
+    def test_null_do_modelo_significa_usar_o_padrao(self):
+        # Modelos como o gpt-oss mandam null nos parametros opcionais (Groq recusa se o schema nao aceitar).
+        self.assertEqual(consultar_vendas(self.ctx, None, None, None)["linhas"],
+                         consultar_vendas(self.ctx)["linhas"])
+        self.assertEqual(consultar_validade(self.ctx, None), consultar_validade(self.ctx))
+        self.assertEqual(consultar_estoque(self.ctx, None, None), consultar_estoque(self.ctx))
+
+    def test_schemas_aceitam_null_nos_opcionais_e_exigem_os_obrigatorios(self):
+        from src.ferramentas import SCHEMAS
+        for schema in SCHEMAS:
+            params = schema["function"]["parameters"]
+            for nome, prop in params["properties"].items():
+                if nome in params["required"]:
+                    self.assertNotIn("null", prop["type"], nome)
+                else:
+                    self.assertIn("null", prop["type"], nome)
+
     def test_estoque_nao_vaza_dados_da_outra_loja(self):
         linhas = consultar_estoque(self.ctx, produto="Leite")["linhas"]
         self.assertEqual(len(linhas), 1)
@@ -314,6 +331,7 @@ class TestAgente(BaseComBanco):
         caso = next(c for c in casos if c["id"] == "02_divergencia")
         cliente = ClienteFalso([resposta(chamadas=[("consultar_estoque", {"produto": "Leite Integral"})]),
                                 resposta("Não: o Leite Integral 1L tem 6 un., abaixo do mínimo de 20.")])
+        self.conn.close()  # no Windows não dá para apagar um .db aberto; executar_caso recria o banco
         r = avaliar.executar_caso(caso, cliente=cliente, cfg=self.cfg(),
                                   prompt=carregar_prompt(RAIZ / "prompts" / "sistema_v1.md"),
                                   pasta_logs=self.tmp / "logs")
