@@ -16,6 +16,7 @@ import argparse
 import json
 import re
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -122,6 +123,7 @@ def main(argv: list[str] | None = None) -> int:
             pass
     parser = argparse.ArgumentParser(prog="python -m src.avaliar")
     parser.add_argument("--caso", help="roda só o caso com este id")
+    parser.add_argument("--pausa", type=int, default=0, help="segundos de espera entre os casos (limite de taxa do provedor)")
     args = parser.parse_args(argv)
 
     cfg = carregar_config()
@@ -133,8 +135,12 @@ def main(argv: list[str] | None = None) -> int:
         if not casos:
             raise SystemExit(f"Caso {args.caso!r} não existe em {ARQUIVO_CASOS.name}.")
 
-    resultados = [executar_caso(c, cliente=cliente, cfg=cfg, prompt=prompt, pasta_logs=cfg.pasta_logs)
-                  for c in casos]
+    resultados = []
+    for i, c in enumerate(casos):
+        if i and args.pausa:
+            print(f"\n(aguardando {args.pausa}s para respeitar o limite de taxa do provedor)")
+            time.sleep(args.pausa)
+        resultados.append(executar_caso(c, cliente=cliente, cfg=cfg, prompt=prompt, pasta_logs=cfg.pasta_logs))
     if not args.caso:  # o resumo cobre a rodada completa; rodar um caso só não sobrescreve
         escrever_resumo(resultados, cfg, prompt, cfg.pasta_logs / "resumo.md")
     aprovados = sum(r["passou"] for r in resultados)

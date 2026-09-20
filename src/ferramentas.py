@@ -72,6 +72,9 @@ def _like(texto: str) -> str:
 
 def consultar_vendas(ctx: Contexto, ordem="desc", limite=5, dias=30) -> dict:
     """Produtos por quantidade vendida nos últimos N dias (desc = mais vendidos; asc = parados)."""
+    ordem = "desc" if ordem is None else ordem  # null vindo do modelo = usar o padrao
+    limite = 5 if limite is None else limite
+    dias = 30 if dias is None else dias
     if ordem not in ("asc", "desc"):
         return erro("argumento_invalido", f"ordem={ordem!r}.",
                     "Use 'desc' (mais vendidos) ou 'asc' (menos vendidos / parados).")
@@ -132,7 +135,7 @@ def consultar_estoque(ctx: Contexto, limite_minimo=None, produto=None) -> dict:
 
 def consultar_validade(ctx: Contexto, dias=7) -> dict:
     """Lotes com saldo que vencem em até N dias (inclui os já vencidos: dias_para_vencer negativo)."""
-    dias, e = _inteiro(dias, "dias", 0, 365)
+    dias, e = _inteiro(7 if dias is None else dias, "dias", 0, 365)
     if e:
         return e
     sql = """
@@ -256,6 +259,12 @@ def registrar_alerta(ctx: Contexto, produto, tipo, mensagem, codigo_lote=None) -
 # --- registro e schemas enviados ao modelo ---------------------------------
 
 def _fn(nome: str, descricao: str, propriedades: dict, obrigatorios: tuple = ()) -> dict:
+    # gpt-oss e outros modelos mandam null nos parametros opcionais: o schema precisa aceitar (null = usar o padrao)
+    for chave, prop in propriedades.items():
+        if chave not in obrigatorios:
+            prop["type"] = [prop["type"], "null"]
+            if "enum" in prop:
+                prop["enum"] = [*prop["enum"], None]
     return {"type": "function", "function": {
         "name": nome, "description": descricao,
         "parameters": {"type": "object", "properties": propriedades, "required": list(obrigatorios)}}}
