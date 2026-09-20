@@ -34,7 +34,7 @@ class Config:
     preco_saida_por_milhao: float | None = None
 
     # arquivos
-    arquivo_prompt: Path = RAIZ / "prompts" / "sistema_v1.md"
+    arquivo_prompt: Path = RAIZ / "prompts" / "sistema_v2.md"
     pasta_logs: Path = RAIZ / "logs"
 
 
