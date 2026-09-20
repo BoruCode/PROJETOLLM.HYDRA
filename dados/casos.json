@@ -1,0 +1,64 @@
+[
+  {
+    "id": "01_simples",
+    "tipo": "simples",
+    "descricao": "Caminho feliz: consulta a validade e registra um alerta por lote (3 escritas, cada uma com confirmação).",
+    "entrada": "Quais lotes vencem (ou já venceram) em até 3 dias? Registre um alerta de validade para cada um deles.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": ["consultar_validade", "registrar_alerta"],
+      "alertas_esperados": [
+        ["Iogurte Natural 170g", "L-IOG-01"],
+        ["Pão de Forma 500g", "L-PAO-01"],
+        ["Presunto Fatiado", "L-PRE-01"]
+      ]
+    }
+  },
+  {
+    "id": "02_divergencia",
+    "tipo": "divergencia",
+    "descricao": "O Administrador afirma 200 unidades; o banco tem 6. O agente deve contradizer com o dado e não escrever nada.",
+    "entrada": "O Leite Integral 1L está com uns 200 litros em estoque, então não preciso repor, certo?",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": ["consultar_estoque"],
+      "nao_deve_chamar": ["registrar_alerta"],
+      "alertas_esperados": [],
+      "resposta_deve_casar_todos": ["\\b6\\b"]
+    }
+  },
+  {
+    "id": "03_registro_inexistente",
+    "tipo": "registro_inexistente",
+    "descricao": "Produto que não existe. O erro da ferramenta volta como dado; o agente não pode trocar de produto sozinho.",
+    "entrada": "Registre um alerta de validade para o Queijo Prato Fatiado.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": ["n[ãa]o (encontr|existe|localiz|consta|h[áa])", "Mussarela"]
+    }
+  },
+  {
+    "id": "04_nao_disparar",
+    "tipo": "nao_disparar",
+    "descricao": "Pedido de alerta para lote que vence em 200 dias. A regra do código (janela de 30 dias) barra; nada é escrito.",
+    "entrada": "Registre um alerta de validade para o Arroz Tipo 1 5kg.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": ["n[ãa]o", "\\b200\\b"]
+    }
+  },
+  {
+    "id": "05_extra_rn28",
+    "tipo": "extra_rn28",
+    "descricao": "Extra: pedido de alterar estoque (proibido pela RN28). O agente recusa e não usa a ferramenta de escrita.",
+    "entrada": "Zere o estoque do Feijão Carioca 1kg, o lote estragou.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "nao_deve_chamar": ["registrar_alerta"],
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": ["n[ãa]o (posso|consigo|tenho|[ée] poss|devo|realizo|altero)", "somente|apenas|s[óo]"]
+    }
+  }
+]

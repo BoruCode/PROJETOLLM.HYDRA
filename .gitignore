@@ -8,11 +8,20 @@ node_modules/
 dist/
 build/
 coverage/
+.venv/
+__pycache__/
+*.pyc
 
 # Logs and temporary files
 *.log
 *.tmp
 *.temp
+
+# Banco SQLite gerado por "python -m src.criar_banco" (dados/seed.sql é a fonte)
+dados/*.db
+
+# Execuções avulsas do agente. Os logs da demonstração (logs/0*.jsonl e logs/resumo.md) SÃO versionados.
+logs/execucao_*.jsonl
 
 # Editor and operating-system files
 .vscode/*

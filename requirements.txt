@@ -1,0 +1,4 @@
+openai==1.51.0
+# openai 1.51.0 quebra com httpx >= 0.28 (o argumento "proxies" foi removido); por isso o pin abaixo.
+httpx==0.27.2
+python-dotenv==1.0.1
