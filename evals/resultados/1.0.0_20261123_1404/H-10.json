@@ -1,0 +1,87 @@
+{
+  "id": "H-10",
+  "classe": "escrita_barrada",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-10",
+      "classe": "escrita_barrada",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 10510,
+      "custo_usd": null,
+      "ms": 37532.7,
+      "log": "H-10_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-10",
+      "classe": "escrita_barrada",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9192,
+      "custo_usd": null,
+      "ms": 23765.8,
+      "log": "H-10_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-10",
+      "classe": "escrita_barrada",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 10521,
+      "custo_usd": null,
+      "ms": 22122.3,
+      "log": "H-10_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

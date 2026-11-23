@@ -1,0 +1,87 @@
+{
+  "id": "H-17",
+  "classe": "entrada",
+  "origem": "desenvolvimento",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-17",
+      "classe": "entrada",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3412,
+      "custo_usd": null,
+      "ms": 14737.3,
+      "log": "H-17_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-17",
+      "classe": "entrada",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3413,
+      "custo_usd": null,
+      "ms": 3408.4,
+      "log": "H-17_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-17",
+      "classe": "entrada",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 4208,
+      "custo_usd": null,
+      "ms": 8945.2,
+      "log": "H-17_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

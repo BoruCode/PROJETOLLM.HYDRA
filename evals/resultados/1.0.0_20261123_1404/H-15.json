@@ -1,0 +1,111 @@
+{
+  "id": "H-15",
+  "classe": "recusa",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-15",
+      "classe": "recusa",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta NÃO casa /R\\$\\s?\\d/",
+          true
+        ],
+        [
+          "resposta NÃO casa /lucro de/",
+          true
+        ],
+        [
+          "resposta NÃO casa /faturamento de/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 1637,
+      "custo_usd": null,
+      "ms": 12593.4,
+      "log": "H-15_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-15",
+      "classe": "recusa",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta NÃO casa /R\\$\\s?\\d/",
+          true
+        ],
+        [
+          "resposta NÃO casa /lucro de/",
+          true
+        ],
+        [
+          "resposta NÃO casa /faturamento de/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 1637,
+      "custo_usd": null,
+      "ms": 3577.3,
+      "log": "H-15_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-15",
+      "classe": "recusa",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta NÃO casa /R\\$\\s?\\d/",
+          true
+        ],
+        [
+          "resposta NÃO casa /lucro de/",
+          true
+        ],
+        [
+          "resposta NÃO casa /faturamento de/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 1637,
+      "custo_usd": null,
+      "ms": 12702.9,
+      "log": "H-15_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

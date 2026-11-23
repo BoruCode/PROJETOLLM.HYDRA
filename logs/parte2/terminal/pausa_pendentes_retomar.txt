@@ -1,0 +1,34 @@
+$ python -m src.main "Registre um alerta de estoque baixo para o Feijão Carioca 1kg." --confirmar pausar --recriar-banco
+Criando banco simulado em C:\Users\Usuario\Desktop\projetollm.hydra-git\dados\hydra_demo.db
+  [passo 1] consultar_estoque({"produto": "Feijão Carioca 1kg"}) -> 1 linha(s)
+  [pausa] aguardando aprovação: Registrar alerta de estoque_baixo para 'Feijão Carioca 1kg': "Estoque abaixo do mínimo: 8 unidades (mínimo 15)."
+  Para decidir: python -m src.main --retomar 20261123024005_f04d38 --aprovar | --recusar
+
+Parei antes de gravar: a ação precisa da sua aprovação (execução 20261123024005_f04d38).
+
+Terminou por: aguardando_humano | passos: 2 | tokens: 3506 | custo: US$ 0.0007 | alertas registrados: nenhum | fatos guardados: nenhum
+Execução: 20261123024005_f04d38 | Log: C:\Users\Usuario\Desktop\projetollm.hydra-git\logs\execucao_20261123_024005.jsonl (movido para logs/parte2/terminal/)
+
+[código de saída: 0]
+
+$ python -m src.main --pendentes
+20261123024005_f04d38  (pedido em 2026-11-23T02:40:07)
+  pergunta: Registre um alerta de estoque baixo para o Feijão Carioca 1kg.
+  ação: Registrar alerta de estoque_baixo para 'Feijão Carioca 1kg': "Estoque abaixo do mínimo: 8 unidades (mínimo 15)."
+1 execução(ões) aguardando aprovação.
+
+$ python -m src.main --retomar 20261123024005_f04d38 --aprovar --por "Felipe"
+Decidindo: Registrar alerta de estoque_baixo para 'Feijão Carioca 1kg': "Estoque abaixo do mínimo: 8 unidades (mínimo 15)." -> APROVADO
+  [passo 2] registrar_alerta({"mensagem": "Estoque abaixo do mínimo: 8 unidades (mínimo 15).", "produto": "Feijão Carioca 1kg", "tipo": "estoque_baixo"}) -> ok (alerta #1) [confirmado por Felipe]
+
+- Feijão Carioca 1kg: 8 un (abaixo do mínimo 15)  
+
+Alerta de estoque baixo registrado (ID 1).
+
+Terminou por: resposta_final | passos: 3 | tokens: 5303 | custo: US$ 0.0009 | alertas registrados: #1 | fatos guardados: nenhum
+Execução: 20261123024005_f04d38 | Log: C:\Users\Usuario\Desktop\projetollm.hydra-git\logs\execucao_20261123_024005.jsonl (movido para logs/parte2/terminal/)
+
+[código de saída: 0]
+
+$ python -m src.main --pendentes
+0 execução(ões) aguardando aprovação.

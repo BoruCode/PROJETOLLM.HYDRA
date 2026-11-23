@@ -1,0 +1,99 @@
+{
+  "id": "H-20",
+  "classe": "entrada",
+  "origem": "sintetico",
+  "pass_k": false,
+  "pass_at_k": false,
+  "repeticoes": [
+    {
+      "id": "H-20",
+      "classe": "entrada",
+      "repetição": 1,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          false
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3241,
+      "custo_usd": null,
+      "ms": 637.5,
+      "log": "H-20_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-20",
+      "classe": "entrada",
+      "repetição": 2,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          false
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3241,
+      "custo_usd": null,
+      "ms": 6709.6,
+      "log": "H-20_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-20",
+      "classe": "entrada",
+      "repetição": 3,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          false
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3250,
+      "custo_usd": null,
+      "ms": 12958.5,
+      "log": "H-20_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

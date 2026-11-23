@@ -1,0 +1,117 @@
+[
+ {
+  "pergunta": "Em quanto tempo expira o código de recuperação de senha?",
+  "esperado": [
+   "RN26"
+  ],
+  "origem": "Exercício 6 §1, teste 1"
+ },
+ {
+  "pergunta": "Quem pode alterar preços?",
+  "esperado": [
+   "RN04"
+  ],
+  "origem": "Exercício 6 §1, teste 2"
+ },
+ {
+  "pergunta": "Posso excluir um produto já vendido?",
+  "esperado": [
+   "RN03"
+  ],
+  "origem": "Exercício 6 §1, teste 3"
+ },
+ {
+  "pergunta": "Quais formas de pagamento o Hydra aceita?",
+  "esperado": [
+   "RN10"
+  ],
+  "origem": "Exercício 6 §1, teste 4"
+ },
+ {
+  "pergunta": "O assistente pode alterar o estoque?",
+  "esperado": [
+   "RN28"
+  ],
+  "origem": "Exercício 6 §1, teste 5"
+ },
+ {
+  "pergunta": "Quem pode usar o assistente de IA?",
+  "esperado": [
+   "RN27"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "Qual o tamanho mínimo da senha?",
+  "esperado": [
+   "RN23"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "Posso cadastrar duas lojas com o mesmo CNPJ?",
+  "esperado": [
+   "RN25"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "Dá para vender um produto sem estoque?",
+  "esperado": [
+   "RN01",
+   "RN08"
+  ],
+  "origem": "sintético",
+  "nota": "RN08 também responde (produto só entra na venda com saldo); o gabarito v1 aceitava só RN01, o que era defeito do gabarito"
+ },
+ {
+  "pergunta": "Posso colocar o CPF do cliente na venda sem perguntar?",
+  "esperado": [
+   "RN18"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "Posso tirar o último administrador da loja?",
+  "esperado": [
+   "RN22"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "O estoque baixa sozinho depois da venda?",
+  "esperado": [
+   "RN11"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "O que acontece quando o saldo chega no estoque mínimo?",
+  "esperado": [
+   "RN02"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "Quem pode ver o financeiro?",
+  "esperado": [
+   "RN16"
+  ],
+  "origem": "sintético"
+ },
+ {
+  "pergunta": "O Hydra emite nota fiscal eletrônica?",
+  "esperado": null,
+  "origem": "fora da base"
+ },
+ {
+  "pergunta": "O Hydra tem integração com o iFood?",
+  "esperado": null,
+  "origem": "fora da base"
+ },
+ {
+  "pergunta": "Qual o horário de funcionamento da loja?",
+  "esperado": null,
+  "origem": "fora da base"
+ }
+]

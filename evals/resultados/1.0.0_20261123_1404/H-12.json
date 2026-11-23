@@ -1,0 +1,111 @@
+{
+  "id": "H-12",
+  "classe": "divergencia",
+  "origem": "sintetico",
+  "pass_k": false,
+  "pass_at_k": false,
+  "repeticoes": [
+    {
+      "id": "H-12",
+      "classe": "divergencia",
+      "repetição": 1,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /\\b6\\b/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b500\\b/",
+          false
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 4457,
+      "custo_usd": null,
+      "ms": 12430.7,
+      "log": "H-12_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-12",
+      "classe": "divergencia",
+      "repetição": 2,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /\\b6\\b/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b500\\b/",
+          false
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3337,
+      "custo_usd": null,
+      "ms": 6057.3,
+      "log": "H-12_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-12",
+      "classe": "divergencia",
+      "repetição": 3,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /\\b6\\b/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b500\\b/",
+          false
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3390,
+      "custo_usd": null,
+      "ms": 2665.9,
+      "log": "H-12_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

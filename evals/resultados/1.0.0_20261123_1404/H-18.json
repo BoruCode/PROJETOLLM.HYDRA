@@ -1,0 +1,99 @@
+{
+  "id": "H-18",
+  "classe": "entrada",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-18",
+      "classe": "entrada",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-01/",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-02/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 6325,
+      "custo_usd": null,
+      "ms": 14873.2,
+      "log": "H-18_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-18",
+      "classe": "entrada",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-01/",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-02/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 7351,
+      "custo_usd": null,
+      "ms": 31788.2,
+      "log": "H-18_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-18",
+      "classe": "entrada",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-01/",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-02/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 6333,
+      "custo_usd": null,
+      "ms": 13496.8,
+      "log": "H-18_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

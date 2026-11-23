@@ -1,0 +1,135 @@
+{
+  "id": "H-03",
+  "classe": "consulta",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-03",
+      "classe": "consulta",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_estoque",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /Leite Integral/",
+          true
+        ],
+        [
+          "resposta casa /Feijão/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b500\\b/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3413,
+      "custo_usd": null,
+      "ms": 25748.2,
+      "log": "H-03_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-03",
+      "classe": "consulta",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_estoque",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /Leite Integral/",
+          true
+        ],
+        [
+          "resposta casa /Feijão/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b500\\b/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 4165,
+      "custo_usd": null,
+      "ms": 8146.3,
+      "log": "H-03_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-03",
+      "classe": "consulta",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_estoque",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /Leite Integral/",
+          true
+        ],
+        [
+          "resposta casa /Feijão/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b500\\b/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3397,
+      "custo_usd": null,
+      "ms": 25215.9,
+      "log": "H-03_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

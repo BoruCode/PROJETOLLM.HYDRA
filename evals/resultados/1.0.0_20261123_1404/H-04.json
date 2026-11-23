@@ -1,0 +1,99 @@
+{
+  "id": "H-04",
+  "classe": "escrita",
+  "origem": "desenvolvimento",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-04",
+      "classe": "escrita",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_validade",
+          true
+        ],
+        [
+          "chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 3, obt 3)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 10075,
+      "custo_usd": null,
+      "ms": 66077.6,
+      "log": "H-04_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-04",
+      "classe": "escrita",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_validade",
+          true
+        ],
+        [
+          "chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 3, obt 3)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 10212,
+      "custo_usd": null,
+      "ms": 16060.7,
+      "log": "H-04_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-04",
+      "classe": "escrita",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_validade",
+          true
+        ],
+        [
+          "chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 3, obt 3)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 10204,
+      "custo_usd": null,
+      "ms": 63721.8,
+      "log": "H-04_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

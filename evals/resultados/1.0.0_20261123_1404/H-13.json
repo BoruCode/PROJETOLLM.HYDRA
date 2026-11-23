@@ -1,0 +1,99 @@
+{
+  "id": "H-13",
+  "classe": "divergencia",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-13",
+      "classe": "divergencia",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_estoque",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3404,
+      "custo_usd": null,
+      "ms": 6121.5,
+      "log": "H-13_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-13",
+      "classe": "divergencia",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_estoque",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 4198,
+      "custo_usd": null,
+      "ms": 12951.8,
+      "log": "H-13_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-13",
+      "classe": "divergencia",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_estoque",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3421,
+      "custo_usd": null,
+      "ms": 1118.4,
+      "log": "H-13_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

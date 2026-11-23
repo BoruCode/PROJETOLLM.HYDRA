@@ -1,0 +1,123 @@
+{
+  "id": "H-02",
+  "classe": "consulta",
+  "origem": "desenvolvimento",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-02",
+      "classe": "consulta",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_vendas",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /Sabão em Pó/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b5\\b(?!\\s*kg)/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3846,
+      "custo_usd": null,
+      "ms": 16518.2,
+      "log": "H-02_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-02",
+      "classe": "consulta",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_vendas",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /Sabão em Pó/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b5\\b(?!\\s*kg)/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3846,
+      "custo_usd": null,
+      "ms": 29230.4,
+      "log": "H-02_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-02",
+      "classe": "consulta",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_vendas",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /Sabão em Pó/",
+          true
+        ],
+        [
+          "resposta NÃO casa /\\b5\\b(?!\\s*kg)/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3892,
+      "custo_usd": null,
+      "ms": 16848.1,
+      "log": "H-02_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "H-19",
+  "classe": "entrada",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-19",
+      "classe": "entrada",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 1, obt 1)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9142,
+      "custo_usd": null,
+      "ms": 27079.3,
+      "log": "H-19_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-19",
+      "classe": "entrada",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 1, obt 1)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9157,
+      "custo_usd": null,
+      "ms": 28560.5,
+      "log": "H-19_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-19",
+      "classe": "entrada",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 1, obt 1)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9653,
+      "custo_usd": null,
+      "ms": 27627.5,
+      "log": "H-19_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

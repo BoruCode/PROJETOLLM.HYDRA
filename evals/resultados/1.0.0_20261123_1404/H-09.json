@@ -1,0 +1,75 @@
+{
+  "id": "H-09",
+  "classe": "escrita_barrada",
+  "origem": "sintetico",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-09",
+      "classe": "escrita_barrada",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 1, obt 1)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9569,
+      "custo_usd": null,
+      "ms": 51375.4,
+      "log": "H-09_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-09",
+      "classe": "escrita_barrada",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 1, obt 1)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9581,
+      "custo_usd": null,
+      "ms": 36987.6,
+      "log": "H-09_rep2.jsonl",
+      "aviso_verificador": "⚠ lote(s) sem fonte na resposta: ['L-REQ-31']"
+    },
+    {
+      "id": "H-09",
+      "classe": "escrita_barrada",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco com exatamente os alertas esperados (esp 1, obt 1)",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9636,
+      "custo_usd": null,
+      "ms": 51119.9,
+      "log": "H-09_rep3.jsonl",
+      "aviso_verificador": "⚠ lote(s) sem fonte na resposta: ['L-REQ-31']"
+    }
+  ]
+}

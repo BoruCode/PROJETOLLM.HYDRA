@@ -1,0 +1,35 @@
+[
+  {
+    "id": "groq-gpt-oss-120b",
+    "nome": "gpt-oss-120b (Groq)",
+    "base_url": "https://api.groq.com/openai/v1",
+    "modelo": "openai/gpt-oss-120b",
+    "chave_env": "GROQ_API_KEY",
+    "preco_entrada_por_milhao": 0.15,
+    "preco_saida_por_milhao": 0.60,
+    "contexto": "131 mil tokens",
+    "onde_roda": "API pública (Groq, EUA)"
+  },
+  {
+    "id": "groq-gpt-oss-20b",
+    "nome": "gpt-oss-20b (Groq)",
+    "base_url": "https://api.groq.com/openai/v1",
+    "modelo": "openai/gpt-oss-20b",
+    "chave_env": "GROQ_API_KEY",
+    "preco_entrada_por_milhao": 0.075,
+    "preco_saida_por_milhao": 0.30,
+    "contexto": "131 mil tokens",
+    "onde_roda": "API pública (Groq, EUA)"
+  },
+  {
+    "id": "mistral-small",
+    "nome": "Mistral Small (Mistral)",
+    "base_url": "https://api.mistral.ai/v1",
+    "modelo": "mistral-small-latest",
+    "chave_env": "MISTRAL_API_KEY",
+    "preco_entrada_por_milhao": 0.15,
+    "preco_saida_por_milhao": 0.60,
+    "contexto": "262 mil tokens",
+    "onde_roda": "API pública (Mistral, UE)"
+  }
+]

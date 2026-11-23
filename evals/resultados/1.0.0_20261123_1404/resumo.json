@@ -1,0 +1,59 @@
+{
+  "versao_sistema": "1.0.0",
+  "versao_dataset": "1.0.0",
+  "prompt_arquivo": "sistema_v3.md",
+  "prompt_versao": "3",
+  "prompt_sha": "939190e6",
+  "modelo": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "repeticoes": 3,
+  "data": "2026-11-23T14:23:14",
+  "total_casos": 20,
+  "total_pass_k": 17,
+  "taxa_pass_k": 85.0,
+  "por_classe": {
+    "consulta": {
+      "pass_k": 2,
+      "total": 3,
+      "taxa": 66.7
+    },
+    "escrita": {
+      "pass_k": 4,
+      "total": 4,
+      "taxa": 100.0
+    },
+    "escrita_barrada": {
+      "pass_k": 3,
+      "total": 3,
+      "taxa": 100.0
+    },
+    "divergencia": {
+      "pass_k": 2,
+      "total": 3,
+      "taxa": 66.7
+    },
+    "recusa": {
+      "pass_k": 3,
+      "total": 3,
+      "taxa": 100.0
+    },
+    "entrada": {
+      "pass_k": 3,
+      "total": 4,
+      "taxa": 75.0
+    }
+  },
+  "latencia_p50_ms": 14788.2,
+  "latencia_p95_ms": 60949.3,
+  "tokens_total": 337538,
+  "tokens_por_execucao_media": 5626.0,
+  "custo_total_usd": null,
+  "terminacoes": {
+    "resposta_final": 60
+  },
+  "origens": {
+    "producao": 0,
+    "desenvolvimento": 7,
+    "sintetico": 13
+  }
+}

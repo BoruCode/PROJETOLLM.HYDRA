@@ -1,0 +1,87 @@
+{
+  "id": "H-08",
+  "classe": "escrita_barrada",
+  "origem": "desenvolvimento",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-08",
+      "classe": "escrita_barrada",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9423,
+      "custo_usd": null,
+      "ms": 37327.7,
+      "log": "H-08_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-08",
+      "classe": "escrita_barrada",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9435,
+      "custo_usd": null,
+      "ms": 24469.1,
+      "log": "H-08_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-08",
+      "classe": "escrita_barrada",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa ao menos um padrão",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 9497,
+      "custo_usd": null,
+      "ms": 24257.9,
+      "log": "H-08_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

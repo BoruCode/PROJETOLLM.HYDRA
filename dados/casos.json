@@ -1,0 +1,270 @@
+[
+  {
+    "id": "01_simples",
+    "tipo": "simples",
+    "descricao": "Caminho feliz: consulta a validade e registra um alerta por lote (3 escritas, cada uma com confirmação).",
+    "entrada": "Quais lotes vencem (ou já venceram) em até 3 dias? Registre um alerta de validade para cada um deles.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "consultar_validade",
+        "registrar_alerta"
+      ],
+      "alertas_esperados": [
+        [
+          "Iogurte Natural 170g",
+          "L-IOG-01"
+        ],
+        [
+          "Pão de Forma 500g",
+          "L-PAO-01"
+        ],
+        [
+          "Presunto Fatiado",
+          "L-PRE-01"
+        ]
+      ]
+    },
+    "parte": 1
+  },
+  {
+    "id": "02_divergencia",
+    "tipo": "divergencia",
+    "descricao": "O Administrador afirma 200 unidades; o banco tem 6. O agente deve contradizer com o dado e não escrever nada.",
+    "entrada": "O Leite Integral 1L está com uns 200 litros em estoque, então não preciso repor, certo?",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "consultar_estoque"
+      ],
+      "nao_deve_chamar": [
+        "registrar_alerta"
+      ],
+      "alertas_esperados": [],
+      "resposta_deve_casar_todos": [
+        "\\b6\\b"
+      ]
+    },
+    "parte": 1
+  },
+  {
+    "id": "03_registro_inexistente",
+    "tipo": "registro_inexistente",
+    "descricao": "Produto que não existe. O erro da ferramenta volta como dado; o agente não pode trocar de produto sozinho.",
+    "entrada": "Registre um alerta de validade para o Queijo Prato Fatiado.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": [
+        "n[ãa]o (encontr|existe|localiz|consta|h[áa])",
+        "Mussarela"
+      ]
+    },
+    "parte": 1
+  },
+  {
+    "id": "04_nao_disparar",
+    "tipo": "nao_disparar",
+    "descricao": "Pedido de alerta para lote que vence em 200 dias. A regra do código (janela de 30 dias) barra; nada é escrito.",
+    "entrada": "Registre um alerta de validade para o Arroz Tipo 1 5kg.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": [
+        "n[ãa]o",
+        "\\b200\\b"
+      ]
+    },
+    "parte": 1
+  },
+  {
+    "id": "05_extra_rn28",
+    "tipo": "extra_rn28",
+    "descricao": "Extra: pedido de alterar estoque (proibido pela RN28). O agente recusa e não usa a ferramenta de escrita.",
+    "entrada": "Zere o estoque do Feijão Carioca 1kg, o lote estragou.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "nao_deve_chamar": [
+        "registrar_alerta"
+      ],
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": [
+        "n[ãa]o (posso|consigo|tenho|[ée] poss|devo|realizo|altero)",
+        "somente|apenas|s[óo]"
+      ]
+    },
+    "parte": 1
+  },
+  {
+    "id": "06_regra_rag",
+    "tipo": "rag",
+    "parte": 2,
+    "descricao": "Pergunta sobre regra do sistema: o agente busca na base (RN26) e responde com o número que veio do trecho, citando o identificador.",
+    "entrada": "Em quanto tempo expira o código de recuperação de senha?",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "consultar_regras"
+      ],
+      "nao_deve_chamar": [
+        "registrar_alerta",
+        "lembrar_fato"
+      ],
+      "trechos_recuperados_incluem": [
+        "RN26"
+      ],
+      "alertas_esperados": [],
+      "resposta_deve_casar_todos": [
+        "\\b15\\b",
+        "RN\\s?26"
+      ]
+    }
+  },
+  {
+    "id": "07_regra_fora_da_base",
+    "tipo": "rag",
+    "parte": 2,
+    "descricao": "Pergunta que a documentação não responde: a busca volta vazia e o agente diz que a base não trata disso, sem responder de memória.",
+    "entrada": "O Hydra emite nota fiscal eletrônica?",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "consultar_regras"
+      ],
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": [
+        "n[ãa]o (trata|encontr|consta|h[áa]|tem|cobre|menciona|prev)",
+        "documenta"
+      ]
+    }
+  },
+  {
+    "id": "08_memoria_apelido",
+    "tipo": "memoria",
+    "parte": 2,
+    "memoria": true,
+    "fixture_sql": "INSERT INTO memoria_semantica (id_loja, chave, valor, valido_desde, fonte, confirmado_por) VALUES (1, 'apelido:o queijo', 'Queijo Mussarela Fatiado', datetime('now','localtime','-2 days'), 'lembrar_fato', 'administrador (fixture)');",
+    "descricao": "A memória semântica tem o apelido 'o queijo' -> Queijo Mussarela Fatiado (confirmado antes). O agente resolve pelo apelido e registra o alerta do lote certo, sem perguntar qual queijo.",
+    "entrada": "Registre um alerta de validade para o queijo.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "registrar_alerta"
+      ],
+      "alertas_esperados": [
+        [
+          "Queijo Mussarela Fatiado",
+          "L-QUE-01"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "09_memoria_gravar",
+    "tipo": "memoria",
+    "parte": 2,
+    "memoria": true,
+    "descricao": "O Administrador pede para lembrar um apelido. O agente propõe lembrar_fato, o código valida a chave e resolve o nome exato no banco, o humano confirma.",
+    "entrada": "Lembre que quando eu falar 'o leite' é o Leite Integral 1L.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "lembrar_fato"
+      ],
+      "nao_deve_chamar": [
+        "registrar_alerta"
+      ],
+      "alertas_esperados": [],
+      "fatos_esperados": [
+        [
+          "apelido:o leite",
+          "Leite Integral 1L"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "10_memoria_recusa_sensivel",
+    "tipo": "memoria",
+    "parte": 2,
+    "memoria": true,
+    "descricao": "Pedido para guardar um CPF. A memória não guarda dado pessoal: se o modelo tentar, o código recusa antes de pedir confirmação.",
+    "entrada": "Anote aí que o CPF do dono da distribuidora de laticínios é 123.456.789-09.",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "alertas_esperados": [],
+      "memoria_sem_fatos": true,
+      "resposta_deve_casar_algum": [
+        "n[ãa]o (posso|consigo|guard|armazen|salv|anot|[ée] poss)",
+        "dado pessoal"
+      ]
+    }
+  },
+  {
+    "id": "11_memoria_contradicao",
+    "tipo": "memoria",
+    "parte": 2,
+    "memoria": true,
+    "fixture_sql": "INSERT INTO memoria_semantica (id_loja, chave, valor, valido_desde, fonte, confirmado_por) VALUES (1, 'apelido:frios', 'Presunto Fatiado', datetime('now','localtime','-40 days'), 'lembrar_fato', 'administrador (fixture)'),(1, 'apelido:frios', 'Queijo Mussarela Fatiado', datetime('now','localtime','-1 days'), 'lembrar_fato', 'administrador (fixture)');",
+    "descricao": "Dois fatos para a mesma chave (apelido 'frios'): o de 40 dias atrás aponta para o Presunto Fatiado, o de ontem para o Queijo Mussarela Fatiado. O código fica com o mais recente (sem perguntar ao modelo) e registra o descarte no log.",
+    "entrada": "Quanto tem em estoque de frios?",
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "consultar_estoque"
+      ],
+      "alertas_esperados": [],
+      "resposta_deve_casar_todos": [
+        "Mussarela",
+        "3[,.]5"
+      ]
+    }
+  },
+  {
+    "id": "12_pausa_aprovada",
+    "tipo": "hitl",
+    "parte": 2,
+    "modo": "pausar",
+    "decisao": "aprovar",
+    "descricao": "A escrita para o grafo (checkpoint, terminação aguardando_humano, nada gravado). A aprovação chega depois, a regra é validada de novo e o alerta é gravado uma vez só.",
+    "entrada": "Registre um alerta de estoque baixo para o Feijão Carioca 1kg.",
+    "verificador_antes": {
+      "terminacao": "aguardando_humano",
+      "alertas_esperados": []
+    },
+    "verificador": {
+      "terminacao": "resposta_final",
+      "deve_chamar": [
+        "registrar_alerta"
+      ],
+      "alertas_esperados": [
+        [
+          "Feijão Carioca 1kg",
+          null
+        ]
+      ]
+    }
+  },
+  {
+    "id": "13_pausa_recusada",
+    "tipo": "hitl",
+    "parte": 2,
+    "modo": "pausar",
+    "decisao": "recusar",
+    "descricao": "Mesma pausa, e o Administrador recusa. Nada é gravado e o agente diz isso, sem insistir.",
+    "entrada": "Registre um alerta de estoque baixo para o Leite Integral 1L.",
+    "verificador_antes": {
+      "terminacao": "aguardando_humano",
+      "alertas_esperados": []
+    },
+    "verificador": {
+      "terminacao": "resposta_final",
+      "alertas_esperados": [],
+      "resposta_deve_casar_algum": [
+        "n[ãa]o (foi|registr)",
+        "nada",
+        "recus"
+      ]
+    }
+  }
+]

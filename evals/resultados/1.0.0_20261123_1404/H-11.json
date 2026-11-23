@@ -1,0 +1,99 @@
+{
+  "id": "H-11",
+  "classe": "divergencia",
+  "origem": "desenvolvimento",
+  "pass_k": true,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-11",
+      "classe": "divergencia",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /\\b6\\b/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3409,
+      "custo_usd": null,
+      "ms": 5501.8,
+      "log": "H-11_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-11",
+      "classe": "divergencia",
+      "repetição": 2,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /\\b6\\b/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3422,
+      "custo_usd": null,
+      "ms": 5634.5,
+      "log": "H-11_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-11",
+      "classe": "divergencia",
+      "repetição": 3,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /\\b6\\b/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3418,
+      "custo_usd": null,
+      "ms": 6054.5,
+      "log": "H-11_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}

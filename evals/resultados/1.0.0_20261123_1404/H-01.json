@@ -1,0 +1,159 @@
+{
+  "id": "H-01",
+  "classe": "consulta",
+  "origem": "desenvolvimento",
+  "pass_k": false,
+  "pass_at_k": true,
+  "repeticoes": [
+    {
+      "id": "H-01",
+      "classe": "consulta",
+      "repetição": 1,
+      "passou": true,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_validade",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /L-PRE-01/",
+          true
+        ],
+        [
+          "resposta casa /L-PAO-01/",
+          true
+        ],
+        [
+          "resposta casa /L-IOG-01/",
+          true
+        ],
+        [
+          "resposta NÃO casa /L-BAN-01/",
+          true
+        ],
+        [
+          "resposta NÃO casa /L-TOM-01/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3583,
+      "custo_usd": null,
+      "ms": 1762.2,
+      "log": "H-01_rep1.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-01",
+      "classe": "consulta",
+      "repetição": 2,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_validade",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /L-PRE-01/",
+          false
+        ],
+        [
+          "resposta casa /L-PAO-01/",
+          false
+        ],
+        [
+          "resposta casa /L-IOG-01/",
+          false
+        ],
+        [
+          "resposta NÃO casa /L-BAN-01/",
+          true
+        ],
+        [
+          "resposta NÃO casa /L-TOM-01/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3608,
+      "custo_usd": null,
+      "ms": 1569.6,
+      "log": "H-01_rep2.jsonl",
+      "aviso_verificador": null
+    },
+    {
+      "id": "H-01",
+      "classe": "consulta",
+      "repetição": 3,
+      "passou": false,
+      "checagens": [
+        [
+          "terminou por 'resposta_final'",
+          true
+        ],
+        [
+          "chamou consultar_validade",
+          true
+        ],
+        [
+          "NÃO chamou registrar_alerta",
+          true
+        ],
+        [
+          "banco sem alerta novo (esp 0, obt 0)",
+          true
+        ],
+        [
+          "resposta casa /L-PRE-01/",
+          false
+        ],
+        [
+          "resposta casa /L-PAO-01/",
+          false
+        ],
+        [
+          "resposta casa /L-IOG-01/",
+          false
+        ],
+        [
+          "resposta NÃO casa /L-BAN-01/",
+          true
+        ],
+        [
+          "resposta NÃO casa /L-TOM-01/",
+          true
+        ]
+      ],
+      "terminacao": "resposta_final",
+      "tokens": 3578,
+      "custo_usd": null,
+      "ms": 20168.0,
+      "log": "H-01_rep3.jsonl",
+      "aviso_verificador": null
+    }
+  ]
+}
